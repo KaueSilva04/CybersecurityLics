@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LICS - Liga de Cibersegurança da Unicamp</title>
+    <link rel="stylesheet" type="text/css" href="css/homepag.css" />
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="logo">LICS<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#eventos">Eventos</a></li>
+                <li><a href="#oferecemos">Oferecemos</a></li>
+                <li><a href="#conteudos">Conteúdos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn btn-login" onclick="openModal('login-modal')">Entrar</button>
+                <button class="btn btn-register" onclick="openModal('register-modal')">Cadastrar</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Liga de Cibersegurança da Unicamp</h1>
+                <p>Desenvolvendo os futuros especialistas em segurança digital. Junte-se à comunidade LICS e proteja o
+                    mundo digital.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-large btn-primary" onclick="openModal('register-modal')">Junte-se a
+                        nós</button>
+                    <button class="btn btn-large btn-outline">Saiba mais</button>
+                </div>
+            </div>
+            <div class="cybersecurity-animation"></div>
+        </div>
+    </section>
+
+
+    <!-- Oferecemos Section -->
+    <section id="oferecemos" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>O Que Oferecemos</h2>
+                <p>Desenvolvemos diversas iniciativas para aprimorar o conhecimento e habilidades em cibersegurança.</p>
+            </div>
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3 class="service-title">Cursos Especializados</h3>
+                    <p class="service-description">Cursos de formação em diversas áreas da segurança, desde fundamentos
+                        até técnicas avançadas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💬</div>
+                    <h3 class="service-title">Fórum de Discussão</h3>
+                    <p class="service-description">Comunidade online para troca de conhecimentos, dúvidas e debates
+                        sobre segurança digital.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔗</div>
+                    <h3 class="service-title">Network</h3>
+                    <p class="service-description">Conexão com profissionais, pesquisadores e empresas do setor de
+                        cibersegurança.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3 class="service-title">Projetos Práticos</h3>
+                    <p class="service-description">Desenvolvimento de projetos reais para aplicar conhecimentos em
+                        ambientes seguros.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏆</div>
+                    <h3 class="service-title">Competições</h3>
+                    <p class="service-description">Participação em CTFs, hackathons e eventos competitivos nacionais e
+                        internacionais.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📚</div>
+                    <h3 class="service-title">Biblioteca de Recursos</h3>
+                    <p class="service-description">Acesso a materiais exclusivos, ferramentas e laboratórios virtuais
+                        para prática.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conteúdos Section -->
+    <section id="conteudos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Conteúdos Disponíveis</h2>
+                <p>Explore nossos materiais e recursos para aprimorar seus conhecimentos em cibersegurança.</p>
+            </div>
+            <div class="content-container">
+                <div class="content-card">
+                    <div class="content-image">
+                        <img src="/api/placeholder/400/200" alt="Fundamentos de Criptografia">
+                    </div>
+                    <div class="content-details">
+                        <span class="content-category">Curso</span>
+                        <h3 class="content-title">Fundamentos de Criptografia</h3>
+                        <p class="content-description">Aprenda os conceitos básicos e avançados de criptografia e sua
+                            aplicação em segurança.</p>
+                        <a href="#" class="event-link">Acessar curso</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="content-image">
+                        <img src="/api/placeholder/400/200" alt="Laboratório de Vulnerabilidades Web">
+                    </div>
+                    <div class="content-details">
+                        <span class="content-category">Lab</span>
+                        <h3 class="content-title">Laboratório de Vulnerabilidades Web</h3>
+                        <p class="content-description">Ambiente controlado para praticar identificação e exploração de
+                            vulnerabilidades em aplicações web.</p>
+                        <a href="#" class="event-link">Acessar laboratório</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="content-image">
+                        <img src="/api/placeholder/400/200" alt="Guia de Análise de Malware">
+                    </div>
+                    <div class="content-details">
+                        <span class="content-category">E-book</span>
+                        <h3 class="content-title">Guia de Análise de Malware</h3>
+                        <p class="content-description">Material completo sobre técnicas de análise de malware e
+                            ferramentas utilizadas por especialistas.</p>
+                        <a href="#" class="event-link">Baixar e-book</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eventos Section -->
+    <section id="eventos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Próximos Eventos</h2>
+                <p>Fique por dentro dos nossos eventos e workshops exclusivos para membros e comunidade.</p>
+            </div>
+            <div class="events-container">
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="/api/placeholder/400/200" alt="CTF Challenge">
+                    </div>
+                    <div class="event-details">
+                        <span class="event-date">15 Mar 2025</span>
+                        <h3 class="event-title">CTF Challenge - Edição Unicamp</h3>
+                        <p class="event-description">Competição Capture The Flag com desafios de segurança para testar
+                            suas habilidades em ambiente controlado.</p>
+                        <a href="#" class="event-link">Inscrever-se</a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="/api/placeholder/400/200" alt="Workshop Pentest">
+                    </div>
+                    <div class="event-details">
+                        <span class="event-date">22 Mar 2025</span>
+                        <h3 class="event-title">Workshop: Introdução ao Pentest</h3>
+                        <p class="event-description">Aprenda os fundamentos de testes de penetração com especialistas da
+                            área de segurança.</p>
+                        <a href="#" class="event-link">Inscrever-se</a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="/api/placeholder/400/200" alt="Hackathon Segurança">
+                    </div>
+                    <div class="event-details">
+                        <span class="event-date">05-07 Abr 2025</span>
+                        <h3 class="event-title">Hackathon de Segurança</h3>
+                        <p class="event-description">Um fim de semana inteiro dedicado a resolver problemas reais de
+                            segurança digital.</p>
+                        <a href="#" class="event-link">Inscrever-se</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Fique Atualizado</h2>
+            <p>Receba em primeira mão as novidades, eventos e conteúdos exclusivos da LICS.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Seu melhor e-mail">
+                <button type="submit" class="newsletter-btn">Inscrever-se</button>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>LICS</h3>
+                    <p>Liga de Cibersegurança da Unicamp - desenvolvendo os futuros especialistas em segurança digital.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">t</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">ig</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#eventos">Eventos</a></li>
+                        <li><a href="#oferecemos">Oferecemos</a></li>
+                        <li><a href="#conteudos">Conteúdos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul class="footer-links">
+                        <li>Instituto de Computação - Unicamp</li>
+                        <li>Av. Albert Einstein, 1251</li>
+                        <li>Cidade Universitária, Campinas - SP</li>
+                        <li>contato@lics.unicamp.br</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 LICS - Liga de Cibersegurança da Unicamp. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal-container" id="login-modal">
+        <div class="

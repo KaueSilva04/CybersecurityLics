@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSecLearn - Plataforma de Aprendizagem em Cibersegurança</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #1a252f;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu li {
+            margin-left: 1.5rem;
+        }
+        
+        .menu a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .menu a:hover {
+            color: var(--accent-color);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--light-color);
+            color: var(--light-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background-color: #c0392b;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .features {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-title p {
+            color: #777;
+            font-size: 1.1rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .courses {
+            padding: 5rem 0;
+            background-color: #f5f5f5;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .course-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .course-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .course-card:hover .course-image img {
+            transform: scale(1.05);
+        }
+        
+        .course-content {
+            padding: 1.5rem;
+        }
+        
+        .course-category {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .course-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .course-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .course-price {
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+        
+        .testimonials {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-content {
+            position: relative;
+            padding: 0 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-content::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -2rem;
+            left: -1rem;
+            color: #ddd;
+            font-family: serif;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            color: var(--primary-color);
+        }
+        
+        .author-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .cta {
+            padding: 5rem 0;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            color: var(--light-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #3a3a3a;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Página de Login */
+        .auth-section {
+            padding: 7rem 0 5rem;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .auth-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+        }
+        
+        .auth-image {
+            flex: 1;
+            background: url('/api/placeholder/500/800') center/cover no-repeat;
+            display: none;
+        }
+        
+        .auth-form {
+            flex: 1;
+            padding: 3rem 2rem;
+        }
+        
+        .auth-form h2 {
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-check input {
+            margin-right: 0.5rem;
+        }
+        
+        .form-check label {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .auth-links {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .auth-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        
+        /* Responsividade */
+        @media (min-width: 768px) {
+            .auth-image {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Cyber<span>SecLearn</span></div>
+                <ul class="menu">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#features">Recursos</a></li>
+                    <li><a href="#courses">Cursos</a></li>
+                    <li><a href="#testimonials">Depoimentos</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="#login" class="btn btn-outline">Entrar</a>
+                    <a href="#register" class="btn btn-primary">Cadastrar</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Aprenda Cibersegurança de Forma Prática e Eficiente</h1>
+                <p>Domine as habilidades essenciais para proteger sistemas e dados em um mundo cada vez mais conectado. Cursos desenvolvidos por especialistas do setor.</p>
+                <div class="cta-buttons">
+                    <a href="#courses" class="btn btn-primary">Ver Cursos</a>
+                    <a href="#demo" class="btn btn-outline">Solicitar Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Por que escolher nossa plataforma?</h2>
+                <p>Oferecemos recursos exclusivos para uma aprendizagem eficiente e prática</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Laboratórios Virtuais</h3>
+                    <p>Ambientes seguros para praticar técnicas de defesa e ataque sem riscos legais ou éticos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Certificações Reconhecidas</h3>
+                    <p>Prepare-se para as principais certificações do mercado (CompTIA, CEH, CISSP).</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍💻</div>
+                    <h3>Instrutores Especialistas</h3>
+                    <p>Aprenda com profissionais que atuam diariamente na linha de frente da cibersegurança.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Conteúdo Atualizado</h3>
+                    <p>Materiais constantemente revisados para abordar as ameaças e tecnologias mais recentes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Comunidade Ativa</h3>
+                    <p>Conecte-se com outros estudantes e profissionais para trocar experiências e solucionar desafios.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Acesso Multiplataforma</h3>
+                    <p>Estude quando e onde quiser, com acesso total via desktop, tablet e smartphone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Cursos</h2>
+                <p>Currículos estruturados para iniciantes e profissionais experientes</p>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/400/300" alt="Fundamentos de Cibersegurança">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Iniciante</span>
+                        <h3>Fundamentos de Cibersegurança</h3>
+                        <p>Aprenda os conceitos básicos de segurança digital, ameaças comuns e práticas recomendadas.</p>
+                        <div class="course-info">
+                            <span>10 semanas</span>
+                            <span class="course-price">R$ 499,90</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/400/300" alt="Testes de Penetração">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Intermediário</span>
+                        <h3>Testes de Penetração</h3>
+                        <p>Domine ferramentas e metodologias para identificar vulnerabilidades em redes e sistemas.</p>
+                        <div class="course-info">
+                            <span>8 semanas</span>
+                            <span class="course-price">R$ 699,90</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/400/300" alt="Análise de Malware">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Avançado</span>
+                        <h3>Análise de Malware</h3>
+                        <p>Técnicas avançadas para detecção, análise e mitigação de software malicioso.</p>
+                        <div class="course-info">
+                            <span>12 semanas</span>
+                            <span class="course-price">R$ 899,90</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/400/300" alt="Resposta a Incidentes">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Especialização</span>
+                        <h3>Resposta a Incidentes</h3>
+                        <p>Desenvolva habilidades para gerenciar e responder a violações de segurança de forma eficaz.</p>
+                        <div class="course-info">
+                            <span>6 semanas</span>
+                            <span class="course-price">R$ 599,90</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/400/300" alt="Segurança em Cloud Computing">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Especialização</span>
+                        <h3>Segurança em Cloud Computing</h3>
+                        <p>Proteja dados e aplicações em ambientes de nuvem AWS, Azure e Google Cloud.</p>
+                        <div class="course-info">
+                            <span>8 semanas</span>
+                            <span class="course-price">R$ 799,90</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/400/300" alt="Criptografia Aplicada">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Avançado</span>
+                        <h3>Criptografia Aplicada</h3>
+                        <p>Fundamentos teóricos e implementações práticas de algoritmos criptográficos modernos.</p>
+                        <div class="course-info">
+                            <span>10 semanas</span>
+                            <span class="course-price">R$ 749,90</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>O que nossos alunos dizem</h2>
+                <p>Histórias de sucesso de profissionais que transformaram suas carreiras conosco</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Os laboratórios práticos fizeram toda a diferença na minha preparação para a certificação CEH. A abordagem hands-on me permitiu desenvolver habilidades que usei imediatamente no trabalho.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/api/placeholder/100/100" alt="Carlos Silva">
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Silva</h4>
+                            <p>Analista de Segurança, TechSec</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Mesmo sem experiência prévia em TI, consegui mudar de carreira aos 35 anos. O suporte dos instrutores e a clareza do material didático foram essenciais para meu sucesso.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/api/placeholder/100/100" alt="Ana Oliveira">
+                        </div>
+                        <div class="author-info">
+                            <h4>Ana Oliveira</h4>
+                            <p>SOC Analyst, CyberDefense</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Como CISO, recomendei esta plataforma para toda minha equipe. O conteúdo atualizado nos mantém preparados para as ameaças emergentes, e os cursos especializados atendem às diferentes necessidades do time.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/api/placeholder/100/100" alt="Roberto Mendes">
+                        </div>
+                        <div class="author-info">
+                            <h4>Roberto Mendes</h4>
+                            <p>CISO, FinancialTech</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="demo">
+        <div class="container">
+            <h2>Pronto para iniciar sua jornada em cibersegurança?</h2>
+            <p>Registre-se hoje e tenha acesso gratuito ao nosso curso introdutório. Explore a plataforma e descubra por que somos a escolha ideal para sua formação.</p>
+            <div class="cta-buttons">
+                <a href="#register" class="btn btn-primary">Cadastrar Gratuitamente</a>
+                <a href="#contact" class="btn btn-outline">Falar com Consultor</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section class="auth-section" id="login" style="display: none;">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-image"></div>
+                <div class="auth-form">
+                    <h2>Bem-vindo de volta!</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Senha</label>
+                            <input type="password" id="password" required>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Lembrar de mim</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%">Entrar</button>
+                    </form>
+                    <div class="auth-links">
+                        <a href="#forgot-password">Esqueceu a senha?</a> | <a href="#register">Criar conta</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>CyberSecLearn</h3>
+                    <p>Sua plataforma completa para aprendizado em cibersegurança, com cursos práticos e atualizados.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#courses">Cursos</a></li>
+                        <li><a href="#features">Recursos</a></li>
+                        <li><a href="#testimonials">Depoimentos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Cursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Fundamentos</a></li>
+                        <li><a href="#">Segurança de Redes</a></li>
+                        <li><a href="#">Ethical Hacking</a></li>
+                        <li><a href="#">Forense Digital</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:contato@cyberseclearn.com.br">contato@cyberseclearn.com.br</a></li>
+                        <li><a href="tel:+551199999999">+55 11 9999-9999</a></li>
+                        <li><a href="#">Suporte</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CyberSecLearn. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simples script para navegação na página
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            for (const link of links) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    
+                    // Ocultar todas as seções auth
+                    document.querySelectorAll('.auth-section').forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    if (targetId === 'login' || targetId === 'register') {
+                        document.getElementById(targetId).style.display = 'flex';
+                        window.scrollTo(0, 0);
+                    } else {
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 70,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

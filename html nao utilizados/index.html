@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liga de Cibersegurança da Unicamp</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" media="screen"/>
+    
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="/api/placeholder/40/40" alt="lics_unicamp">
+                    Cyber<span>Liga</span>
+                </div>
+                <ul class="menu">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#about">Sobre nós</a></li>
+                    <li><a href="#offer">O que oferecemos</a></li>
+                    <li><a href="#courses">Cursos</a></li>
+                    <li><a href="#events">Eventos</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" onclick="openModal('loginModal')">Entrar</button>
+                    <button class="btn btn-primary" onclick="openModal('registerModal')">Cadastrar</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Liga de Cibersegurança da Unicamp</h1>
+                <p>Formando a próxima geração de especialistas em segurança da informação através de conhecimento prático, pesquisa e inovação.</p>
+                <div class="cta-buttons">
+                    <a href="#courses" class="btn btn-primary">Nossos Cursos</a>
+                    <a href="#about" class="btn btn-outline">Saiba Mais</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre a CyberLiga</h2>
+                <p>Conheça nossa missão e história</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>A Liga de Cibersegurança da Unicamp foi fundada em 2025 por um grupo de estudantes apaixonados por segurança da informação, com o objetivo de difundir conhecimento e formar profissionais capacitados para enfrentar os desafios da era digital.</p>
+                    <p>Atualmente, somos uma comunidade de mais de 200 membros, entre alunos de graduação, pós-graduação, professores e profissionais do mercado, unidos pelo interesse comum em cibersegurança e suas aplicações.</p>
+                    <p>Nossa missão é promover a cultura de segurança da informação através de atividades práticas, pesquisa acadêmica e interação com empresas e organizações da área, criando um ecossistema de aprendizado colaborativo e inovador.</p>
+                </div>
+                <div class="about-image">
+                    <img src="img/imgApresentacao.jpg" alt="Equipe da Liga de Cibersegurança">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="offer">
+        <div class="container">
+            <div class="section-title">
+                <h2>O que oferecemos</h2>
+                <p>Conheça as oportunidades disponíveis para membros da nossa comunidade</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Cursos e Workshops</h3>
+                    <p>Aprenda com especialistas através de cursos estruturados, workshops práticos e materiais didáticos exclusivos desenvolvidos por nossa equipe.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Laboratórios Práticos</h3>
+                    <p>Acesso a ambientes controlados para praticar técnicas de segurança ofensiva e defensiva em cenários reais, sem riscos legais ou éticos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Competições CTF</h3>
+                    <p>Participe de competições internas e externas de Capture The Flag, desenvolvendo habilidades técnicas e trabalho em equipe.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Projetos de Pesquisa</h3>
+                    <p>Oportunidades para participar de projetos de pesquisa em parceria com laboratórios da Unicamp e empresas do setor.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Networking Profissional</h3>
+                    <p>Conexões com profissionais do mercado, oportunidades de estágio e programas de mentoria com especialistas em segurança.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Comunidade Ativa</h3>
+                    <p>Faça parte de uma comunidade colaborativa, com fóruns de discussão, encontros periódicos e grupos de estudo especializados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Cursos</h2>
+                <p>Conteúdo estruturado para todos os níveis de conhecimento</p>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/400/300" alt="Introdução à Cibersegurança">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Iniciante</span>
+                        <h3>Introdução à Cibersegurança</h3>
+                        <p>Fundamentos, conceitos básicos e panorama atual da segurança da informação. Ideal para quem está começando na área.</p>
+                        <div class="course-info">
+                            <div class="course-details">
+                                <span>6 semanas</span>
+                            </div>
+                            <div class="course-details">
+                                <span>Online + Presencial</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/400/300" alt="Hacking Ético">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Intermediário</span>
+                        <h3>Hacking Ético</h3>
+                        <p>Metodologias e ferramentas para testes de penetração em aplicações web, redes e sistemas operacionais.</p>
+                        <div class="course-info">
+                            <div class="course-details">
+                                <span>8 semanas</span>
+                            </div>
+                            <div class="course-details">
+                                <span>Laboratório prático</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/400/300" alt="Segurança em Aplicações Web">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Intermediário</span>
+                        <h3>Segurança em Aplicações Web</h3>
+                        <p>Vulnerabilidades comuns (OWASP Top 10), técnicas de exploração e mitigação em aplicações modernas.</p>
+                        <div class="course-info">
+                            <div class="course-details">
+                                <span>6 semanas</span>
+                            </div>
+                            <div class="course-details">
+                                <span>Projeto prático</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/400/300" alt="Análise de Malware">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Avançado</span>
+                        <h3>Análise de Malware</h3>
+                        <p>Técnicas de engenharia reversa, análise estática e dinâmica de código malicioso em ambiente controlado.</p>
+                        <div class="course-info">
+                            <div class="course-details">
+                                <span>10 semanas</span>
+                            </div>
+                            <div class="course-details">
+                                <span>Ambiente isolado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/400/300" alt="Forense Digital">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Avançado</span>
+                        <h3>Forense Digital</h3>
+                        <p>Metodologias e ferramentas para coleta, preservação e análise de evidências digitais em investigações.</p>
+                        <div class="course-info">
+                            <div class="course-details">
+                                <span>8 semanas</span>
+                            </div>
+                            <div class="course-details">
+                                <span>Casos práticos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/400/300" alt="Desenvolvimento Seguro">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Especialização</span>
+                        <h3>Desenvolvimento Seguro</h3>
+                        <p>Práticas de programação segura, revisão de código, DevSecOps e integração de segurança no ciclo de desenvolvimento.</p>
+                        <div class="course-info">
+                            <div class="course-details">
+                                <span>8 semanas</span>
+                            </div>
+                            <div class="course-details">
+                                <span>Para desenvolvedores</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events" id="events">
+        <div class="container">
+            <div class="section-title">
+                <h2>Próximos Eventos</h2>
+                <p>Fique por dentro das atividades da nossa comunidade</p>
+            </div>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="day">15</div>
+                        <div class="month">Mar</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Workshop: Introdução ao Kali Linux</h3>
+                        <div class="event-info">
+                            <p>🕒 14:00 - 17:00</p>
+                            <p>📍 Laboratório IC-3, Unicamp</p>
+                        </div>
+                        <p>Workshop prático sobre as principais ferramentas do Kali Linux para testes de segurança. Traga seu notebook!</p>
+                        <a href="#" class="btn btn-primary">Inscrever-se</a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="day">22</div>
+                        <div class="month">Mar</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Palestra: Carreiras em Cibersegurança</h3>
+                        <div class="event-info">
+                            <p>🕒 19:00 - 21:00</p>
+                            <p>📍 Auditório da FEEC, Unicamp</p>
+                        </div>
+                        <p>Profissionais de empresas líderes compartilham experiências e dicas para ingressar no mercado de segurança.</p>
+                        <a href="#" class="btn btn-primary">Inscrever-se</a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="day">01</div>
+                        <div class="month">Abr</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>CTF Interno: Desafios Web</h3>
+                        <div class="event-info">
+                            <p>🕒 09:00 - 18:00</p>
+                            <p>📍 Online (Discord)</p>
+                        </div>
+                        <p>Competição interna com foco em segurança web. Equipes de até 3 pessoas, prêmios para os vencedores!</p>
+                        <a href="#" class="btn btn-primary">Inscrever-se</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Depoimentos</h2>
+                <p>O que nossos membros dizem sobre a CyberLiga</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Participar da Liga de Cibersegurança mudou completamente minha trajetória acadêmica. Os cursos práticos e o contato com profissionais da área me deram confiança para seguir na carreira.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/api/placeholder/50/50" alt="Avatar">
+                        </div>
+                        <div class="author-info">
+                            <h4>Rafael Silva</h4>
+                            <p>Estudante de Ciência da Computação</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>A comunidade é incrível! Além do conhecimento técnico, desenvolvi soft skills essenciais através das competições e projetos em equipe. Hoje trabalho em uma empresa de segurança graças à rede de contatos da Liga.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/api/placeholder/50/50" alt="Avatar">
+                        </div>
+                        <div class="author-info">
+                            <h4>Amanda Oliveira</h4>
+                            <p>Ex-aluna, hoje Analista de Segurança</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Como professor, vejo um impacto muito positivo da Liga na formação dos alunos. O ambiente de aprendizado prático complementa perfeitamente o conteúdo teórico das disciplinas regulares.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/api/placeholder/50/50" alt="Avatar">
+                        </div>
+                        <div class="author-info">
+                            <h4>Prof. Dr. Carlos Mendes</h4>
+                            <p>Docente do Instituto de Computação</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Junte-se à nossa comunidade</h2>
+            <p>Quer desenvolver habilidades em cibersegurança, conhecer pessoas com interesses em comum e construir uma carreira sólida na área? A CyberLiga é o lugar certo para você!</p>
+            <div class="cta-buttons">
+                <button class="btn btn-outline" onclick="openModal('registerModal')">Torne-se Membro</button>
+                <a href="mailto:contato@cyberliga.unicamp.br" class="btn btn-primary">Entre em Contato</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>CyberLiga</h3>
+                    <p>Liga de Cibersegurança da Unicamp</p>
+                    <p>Instituto de Computação</p>
+                    <p>Av. Albert Einstein, 1251</p>
+                    <p>Cidade Universitária, Campinas - SP</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#about">Sobre nós</a></li>
+                        <li><a href="#offer">O que oferecemos</a></li>
+                        <li><a href="#courses">Cursos</a></li>
+                        <li><a href="#events">Eventos</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Materiais de Estudo</a></li>
+                        <li><a href="#">Ferramentas</a></li>
+                        <li><a href="#">Laboratório Virtual</a></li>
+                        <li><a href="#">Fórum</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Código de Conduta</a></li>
+                        <li><a href="#">Ética em Segurança</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Liga de Cibersegurança da Unicamp. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('loginModal')">&times;</button>
+            <h2 class="modal-title">Entrar</h2>
+            <form>
+                <div class="form-group">
+                    <label for="loginEmail">E-mail</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Senha</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">Lembrar de mim</label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Entrar</button>
+                <div class="auth-links">
+                    <p>Esqueceu sua senha? <a href="#">Recuperar</a></p>
+                    <p>Não tem uma conta? <a href="#" onclick="openModal('registerModal', 'loginModal')">Cadastre-se</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('registerModal')">&times;</button>
+            <h2 class="modal-title">Cadastrar</h2>
+            <form>
+                <div class="form-group">
+                    <label for="registerName">Nome completo</label>
+                    <input type="text" id="registerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">E-mail institucional</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerCourse">Curso/Departamento</label>
+                    <input type="text" id="registerCourse" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Senha</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPasswordConfirm">Confirmar senha</label>
+                    <input type="password" id="registerPasswordConfirm" required>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" id="termsAgree" required>
+                    <label for="termsAgree">Concordo com os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a></label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Cadastrar</button>
+                <div class="auth-links">
+                    <p>Já tem uma conta? <a href="#" onclick="openModal('loginModal', 'registerModal')">Entrar</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    
+    <!-- JavaScript -->
+    <script>
+        function openModal(modalId, closeModalId) {
+            if (closeModalId) {
+                closeModal(closeModalId);
+            }
+            document.getElementById(modalId).style.display = 'flex';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        // Fechar modal ao clicar fora
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
