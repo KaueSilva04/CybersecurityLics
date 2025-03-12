@@ -1,7 +1,6 @@
-
 :root {
-    --primary: #05c43ec6;
-    --secondary: #44aa00ff;
+    --primary: #0e7708;
+    --secondary: rgb(54, 128, 5);
     --dark: rgb(50, 126, 0);
     --light: rgb(232, 255, 216);
     --accent: #7b2cbf;
@@ -10,8 +9,8 @@
     --text: #22241cff;
     --bg-dark: rgb(18, 19, 14);
     --bg-light: #f8f9fa;
-    
-   
+
+
 }
 
 * {
@@ -44,6 +43,7 @@ body {
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+
 }
 
 .navbar-container {
@@ -89,6 +89,7 @@ body {
 .auth-buttons {
     display: flex;
     gap: 1rem;
+    color: #0e7708;
 }
 
 .btn {
@@ -121,8 +122,9 @@ body {
     height: 100vh;
     display: flex;
     align-items: center;
-    background: 
-    linear-gradient(135deg, #454837ff 0%, #337f00fc 100%); /* Imagem de fundo */
+    background:
+        linear-gradient(135deg, #454837ff 0%, #337f00fc 100%);
+    /* Imagem de fundo */
     position: relative;
     overflow: hidden;
 }
