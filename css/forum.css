@@ -1,7 +1,7 @@
 
 :root {
     --primary: #0c8c06;
-    --secondary: rgb(64, 152, 5);
+    --secondary: rgb(41, 98, 3);
     --dark: #014315c6;
     --light: #caf0f8;
     --accent: rgb(5, 124, 21);
@@ -396,6 +396,7 @@ main {
     list-style: none;
     display: flex;
     flex-direction: column;
+    color: #04ca39;
 }
 
 .activity-item {
@@ -404,6 +405,8 @@ main {
     font-size: 0.9rem;
     display: flex;
     gap: 10px;
+    color: #04ca22;
+
 }
 
 .activity-item:last-child {
