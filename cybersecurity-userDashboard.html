@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Cibersegurança</title>
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #0f3460;
+            --highlight-color: #4cc9f0;
+            --text-color: #f2f2f2;
+            --dark-bg: #0d1117;
+            --card-bg: #121826;
+            --hover-color: #2a6ba8;
+            --danger-color: #e63946;
+            --success-color: #2a9d8f;
+            --warning-color: #f4a261;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            background: linear-gradient(90deg, var(--text-color), var(--highlight-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .user-menu img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--highlight-color);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .user-menu img:hover {
+            transform: scale(1.1);
+        }
+        
+        .nav-pills {
+            display: flex;
+            gap: 1rem;
+            margin-right: 2rem;
+        }
+        
+        .nav-pill {
+            padding: 0.5rem 1rem;
+            background-color: var(--secondary-color);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-pill:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .welcome {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--highlight-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .welcome h2 {
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .welcome h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--highlight-color);
+        }
+        
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 2rem;
+        }
+        
+        .security-alert {
+            background-color: rgba(230, 57, 70, 0.2);
+            border-left: 4px solid var(--danger-color);
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .alert-icon {
+            font-size: 2rem;
+            color: var(--danger-color);
+        }
+        
+        .alert-content {
+            flex: 1;
+        }
+        
+        .alert-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--danger-color);
+        }
+        
+        .alert-close {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 3px solid var(--highlight-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-box {
+            background: linear-gradient(145deg, var(--secondary-color), var(--accent-color));
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--highlight-color);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: var(--highlight-color);
+            text-shadow: 0 2px 10px rgba(76, 201, 240, 0.3);
+        }
+        
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-section {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .progress-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--highlight-color);
+        }
+        
+        .progress-container {
+            margin-bottom: 1.5rem;
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: var(--secondary-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--highlight-color));
+            transition: width 1s ease;
+        }
+        
+        .security-score {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(var(--highlight-color) 70%, var(--secondary-color) 0);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .score-circle::before {
+            content: '';
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+        }
+        
+        .score {
+            position: relative;
+            z-index: 1;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--highlight-color);
+        }
+        
+        .activity-section {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .activity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .activity-list {
+            list-style: none;
+        }
+        
+        .activity-item {
+            padding: 1rem;
+            border-left: 3px solid var(--highlight-color);
+            margin-bottom: 1rem;
+            background-color: rgba(76, 201, 240, 0.05);
+            border-radius: 0 4px 4px 0;
+            position: relative;
+        }
+        
+        .activity-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--highlight-color);
+        }
+        
+        .activity-time {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: var(--primary-color);
+            text-align: center;
+            border-top: 1px solid var(--accent-color);
+        }
+        
+        .mode-switch {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            z-index: 10;
+        }
+        
+        .mode-switch:hover {
+            background-color: var(--highlight-color);
+            transform: scale(1.1);
+        }
+        
+        .course-progress {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .course-icon {
+            font-size: 2rem;
+            color: var(--highlight-color);
+        }
+        
+        .course-details {
+            flex: 1;
+        }
+        
+        .course-progress-bar {
+            height: 8px;
+            background-color: var(--secondary-color);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+        
+        .course-progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--highlight-color));
+        }
+        
+        @media (max-width: 768px) {
+            .nav-pills {
+                display: none;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .welcome h2 {
+                font-size: 1.5rem;
+            }
+            
+            .user-menu span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="icon">🛡️</div>
+            <h1>CyberShield</h1>
+        </div>
+        <div class="nav-pills">
+            <div class="nav-pill">Dashboard</div>
+            <div class="nav-pill">Treinamentos</div>
+            <div class="nav-pill">Ferramentas</div>
+            <div class="nav-pill">Comunidade</div>
+        </div>
+        <div class="user-menu">
+            <span>Bem-vindo(a), Analista</span>
+            <img src="/api/placeholder/100/100" alt="Avatar do usuário">
+        </div>
+    </header>
+    
+    <section class="welcome">
+        <h2>Bem-vindo(a) ao seu Dashboard de Cibersegurança</h2>
+        <p>Monitore ameaças, aprimore suas habilidades e conecte-se com a comunidade para fortalecer sua postura de segurança digital.</p>
+    </section>
+    
+    <main>
+        <div class="security-alert">
+            <div class="alert-icon">⚠️</div>
+            <div class="alert-content">
+                <h3>Alerta de Segurança</h3>
+                <p>Nova vulnerabilidade crítica detectada em sistemas Windows. Recomendamos atualizar todos os sistemas para a versão mais recente imediatamente.</p>
+            </div>
+            <button class="alert-close">✕</button>
+        </div>
+        
+        <div class="security-score">
+            <h3>Seu Índice de Segurança</h3>
+            <div class="score-circle">
+                <div class="score">70%</div>
+            </div>
+            <p>Bom, mas há áreas que precisam de atenção</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="icon">🔍</div>
+                <p>Ameaças Detectadas</p>
+                <div class="stat-number">12</div>
+                <p>Este mês</p>
+            </div>
+            <div class="stat-box">
+                <div class="icon">🏆</div>
+                <p>Certificações</p>
+                <div class="stat-number">3</div>
+                <p>Concluídas</p>
+            </div>
+            <div class="stat-box">
+                <div class="icon">📝</div>
+                <p>Cursos</p>
+                <div class="stat-number">5</div>
+                <p>Em andamento</p>
+            </div>
+            <div class="stat-box">
+                <div class="icon">🔔</div>
+                <p>Eventos</p>
+                <div class="stat-number">7</div>
+                <p>Próximos</p>
+            </div>
+        </div>
+        
+        <div class="progress-section">
+            <h3>Metas de Aprendizado</h3>
+            
+            <div class="progress-container">
+                <div class="progress-header">
+                    <span>Certificação CISSP</span>
+                    <span>75%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%"></div>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-header">
+                    <span>Pentest Avançado</span>
+                    <span>40%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 40%"></div>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-header">
+                    <span>Segurança em Cloud</span>
+                    <span>90%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 90%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dashboard-grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">🔐</div>
+                    <h3>Verificador de Vulnerabilidades</h3>
+                </div>
+                <div class="card-content">
+                    <p>Execute verificações automatizadas para identificar pontos fracos em sua infraestrutura e obtenha recomendações personalizadas para fortalecer sua segurança.</p>
+                    <a href="#" class="btn">Iniciar Verificação</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">👥</div>
+                    <h3>Fórum da Comunidade</h3>
+                </div>
+                <div class="card-content">
+                    <p>Conecte-se com milhares de profissionais e entusiastas de cibersegurança. Participe de discussões, compartilhe conhecimentos e esclareça suas dúvidas.</p>
+                    <a href="#" class="btn">Acessar o Fórum</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">🎓</div>
+                    <h3>Cursos e Treinamentos</h3>
+                </div>
+                <div class="card-content">
+                    <p>Aprimore suas habilidades com cursos em pentest, forense digital, criptografia e engenharia reversa.</p>
+                    
+                    <div class="course-progress">
+                        <div class="course-icon">🕵️</div>
+                        <div class="course-details">
+                            <p>Análise de Malware</p>
+                            <div class="course-progress-bar">
+                                <div class="course-progress-fill" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="course-progress">
+                        <div class="course-icon">🔒</div>
+                        <div class="course-details">
+                            <p>Segurança Zero Trust</p>
+                            <div class="course-progress-bar">
+                                <div class="course-progress-fill" style="width: 30%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn">Ver Todos os Cursos</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">📅</div>
+                    <h3>Eventos e Webinars</h3>
+                </div>
+                <div class="card-content">
+                    <p>Participe de eventos ao vivo, webinars e hackathons com especialistas da indústria. Fique por dentro das últimas tendências e ameaças.</p>
+                    <a href="#" class="btn">Calendário de Eventos</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">🛠️</div>
+                    <h3>Ferramentas de Segurança</h3>
+                </div>
+                <div class="card-content">
+                    <p>Acesse nossa coleção de ferramentas especializadas para testes de penetração, análise de vulnerabilidades, monitoramento de rede e muito mais.</p>
+                    <a href="#" class="btn">Explorar Ferramentas</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">📰</div>
+                    <h3>Notícias e Alertas</h3>
+                </div>
+                <div class="card-content">
+                    <p>Mantenha-se informado sobre as mais recentes ameaças, vulnerabilidades e atualizações no campo da cibersegurança.</p>
+                    <a href="#" class="btn">Ver Notícias</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="activity-section">
+            <div class="activity-header">
+                <h3>Atividades Recentes</h3>
+                <a href="#" style="color: var(--highlight-color); text-decoration: none;">Ver Todas</a>
+            </div>
+            
+            <ul class="activity-list">
+                <li class="activity-item">
+                    <p>Concluiu o módulo "Análise de Ameaças Avançadas" do curso de Segurança Ofensiva</p>
+                    <div class="activity-time">Hoje, 14:35</div>
+                </li>
+                <li class="activity-item">
+                    <p>Contribuiu no fórum com resposta sobre "Mitigação de ataques XSS em aplicações React"</p>
+                    <div class="activity-time">Ontem, 18:22</div>
+                </li>
+                <li class="activity-item">
+                    <p>Atualizou seu perfil de segurança após a verificação semanal</p>
+                    <div class="activity-time">28/02/2025, 09:15</div>
+                </li>
+            </ul>
+        </div>
+    </main>
+    
+    <div class="footer">
+        <p>© 2025 CyberShield - Plataforma de Cibersegurança</p>
+    </div>
+    
+    <div class="mode-switch">🌙</div>
+    
+    <script>
+        // Script básico para funcionalidade de fechar alerta
+        document.querySelector('.alert-close').addEventListener('click', function() {
+            document.querySelector('.security-alert').style.display = 'none';
+        });
+        
+        // Script para alternar tema (apenas simulação)
+        document.querySelector('.mode-switch').addEventListener('click', function() {
+            this.textContent = this.textContent === '🌙' ? '☀️' : '🌙';
+            // Aqui seria implementada a lógica para alternar entre temas claro/escuro
+        });
+    </script>
+</body>
+</html>
