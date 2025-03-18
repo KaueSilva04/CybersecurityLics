@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, render_template
+from waitress import serve  # Importe o Waitress
 
 app = Flask(__name__)
 
@@ -13,4 +14,5 @@ def authentication():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    # Rodando a aplicação com o Waitress, não com o Flask
+    serve(app, host='0.0.0.0', port=5000)
