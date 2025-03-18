@@ -7,11 +7,9 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-
 @app.route('/authentication')
 def authentication():
     return render_template('lics-authentication.html')
-
 
 if __name__ == '__main__':
     # Rodando a aplicação com o Waitress, não com o Flask
