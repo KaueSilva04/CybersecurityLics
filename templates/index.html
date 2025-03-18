@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LICS - Liga de Cybersegurança da Unicamp</title>
-    <link rel="stylesheet" type="text/css" href="/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css')}}" />
    
 </head>
 
@@ -26,8 +26,8 @@
             </nav>
 
             <div class="user-nav">
-                <a href="/page/lics-authentication.html" id="loginbtn" class="btn btn-outline">Entrar</a>
-                <a href="/page/lics-authentication.html" id="registerbtn" class="btn">Inscreva-se</a>
+                <a href="{{ url_for('authentication') }}" id="loginbtn" class="btn btn-outline">Entrar</a>
+                <a href="{{ url_for('authentication') }}" id="registerbtn" class="btn">Inscreva-se</a>
             </div>
         </div>
     </header>

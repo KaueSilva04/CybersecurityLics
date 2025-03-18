@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSec Auth</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/authentication.css')}}"/>
+    <script src="{{ url_for('static', filename = 'js/authentication.js')}}"></script>
+    
+</head>
+
+<body>
+    <canvas id="matrix"></canvas>
+
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" data-tab="login">Login</div>
+            <div class="tab" data-tab="register">Registro</div>
+        </div>
+
+        <div class="form-container active" id="login">
+            <h2>Acesso Seguro</h2>
+            <div class="terminal-effect">Autenticando usuário...</div>
+
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="login-username">Usuário:</label>
+                    <input type="text" id="login-username" placeholder="Digite seu nome de usuário" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="login-password">Senha:</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="login-password" placeholder="Digite sua senha" required>
+
+                    </div>
+                    <div class="error-message" id="login-error">Credenciais inválidas. Tentativa registrada.</div>
+                    <div class="forgot-password">
+                        <a href="#">Esqueceu a senha?</a>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me">Lembrar acesso</label>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button type="submit">CONTINUAR</button>
+                    <button type="button" class="back-button" onclick="goBack()">Voltar</button>
+                </div>
+            </form>
+
+            <div class="separator">ou</div>
+
+            <div class="security-features">
+                <div class="security-feature">
+                    <div class="security-icon">🔒</div> Conexão Criptografada
+                </div>
+                <div class="security-feature">
+                    <div class="security-icon">👁️</div> Proteção contra Invasores
+                </div>
+            </div>
+        </div>
+
+        <div class="form-container" id="register">
+            <h2>Criar Conta Segura</h2>
+            <div class="terminal-effect">Inicializando registro seguro...</div>
+
+            <form id="register-form">
+                <div class="input-group">
+                    <label for="register-username">Usuário:</label>
+                    <input type="text" id="register-username" placeholder="Escolha um nome de usuário" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="register-email">E-mail:</label>
+                    <input type="email" id="register-email" placeholder="Seu e-mail" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="register-password">Senha:</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="register-password" class="password-input"
+                            placeholder="Crie uma senha forte" required>
+
+                    </div>
+                    <div class="password-strength"><span></span></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="register-confirm">Confirmar Senha:</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="register-confirm" placeholder="Confirme sua senha" required>
+
+                    </div>
+                    <div class="error-message" id="password-match-error">As senhas não correspondem.</div>
+                </div>
+
+                <div class="input-group">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">Aceito os termos de proteção de dados</label>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button type="submit">REGISTRAR</button>
+                    <button type="button" class="back-button" onclick="goBack()">Voltar</button>
+                </div>
+            </form>
+
+            <div class="security-features">
+                <div class="security-feature">
+                    <div class="security-icon">🔒</div> Criptografia de Ponta a Ponta
+                </div>
+                <div class="security-feature">
+                    <div class="security-icon">🛡️</div> Proteção Avançada
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            CyberSec Auth System © 2025 | Proteção Nível Máximo
+        </div>
+    </div>
+    
+
+    <script>
+        function goBack() {
+            window.location.href = "{{ url_for('index') }}"; // Redireciona para a rota 'index'
+        }
+    </script>
+</body>
+
+</html>
