@@ -12,7 +12,8 @@
 <body>
     <header>
         <div class="container header-content">
-            <div class="logo">
+            <div onclick="goBack()" class="logo">
+                <img src="/static/img/imgLogo.png" alt="">
                 <div class="logo-text">LICS<span>Forum</span></div>
             </div>
 
@@ -449,5 +450,11 @@
         </div>
     </footer>
 </body>
+
+<script>
+      function goBack() {
+            window.location.href = "../index.html"; // Redireciona para a rota 'index'
+        }
+</script>
 
 </html>

@@ -4,7 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-   
+
     // Efeito de chuva matrix
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função de desenho da chuva matrix
     function draw() {
         // Define um fundo preto semi-transparente para criar efeito de rastro
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.09)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // Define a cor e fonte para os caracteres
@@ -44,16 +44,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Move o caractere para baixo
             drops[i]++;
-
             // Reinicia se estiver na parte inferior da tela ou aleatoriamente
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.999) {
                 drops[i] = 0;
             }
+
         }
     }
 
     // Executa a função draw a cada 33ms (aproximadamente 30 FPS)
-    setInterval(draw, 33);
+    setInterval(draw, 45);
 
     // Alternância de abas
     const tabs = document.querySelectorAll('.tab');
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-   
+
 
     // Redimensiona o canvas quando o tamanho da janela muda
     window.addEventListener('resize', () => {
@@ -143,4 +143,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-  
