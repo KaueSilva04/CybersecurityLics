@@ -110,17 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
     const registerForm = document.getElementById('register-form');
 
-    loginForm?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Aqui normalmente você trataria chamadas de API de login
-        alert('Tentativa de login realizada. Em um sistema real, dados seriam enviados de forma segura para autenticação.');
-    });
+    
 
-    registerForm?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Aqui normalmente você trataria chamadas de API de registro
-        alert('Registro realizado com sucesso. Em um sistema real, dados seriam enviados de forma segura para criação de conta.');
-    });
 
     // Alternar visibilidade da senha
     function togglePasswordVisibility(inputId, button) {
