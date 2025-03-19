@@ -22,6 +22,30 @@ except Exception as e:
 def home():
     return "Servidor Flask no Render está rodando!"
 
+@app.route('/check-email', methods=['POST'])
+def check_email():
+    data = request.json
+    email =data.get("email")
+
+    if not email:
+        return jsonify({"error" : "Campo email vazio"})
+
+    try:
+        response = supabase.table("usuario").select("email").eq("email", email).execute()
+
+        if len(response.data) > 0:
+            return jsonify({"message": "email ja cadastrado!", "exists": True}), 200
+        else:
+            return jsonify({"message": "email disponivel", "exists": True}), 200
+    
+    except Exception as e:
+        return jsonify({"error": src(e)}), 500
+        
+
+
+
+
+
 @app.route('/register', methods=['POST'])
 def register():
     data = request.json
@@ -32,23 +56,27 @@ def register():
         return jsonify({"error": "Email e senha são obrigatórios!"}), 400
 
     try:
-        # Inserir dados diretamente na tabela do banco de dados
-        db_response = supabase.table("usuario").insert({
-            "email": email,
-            "senha": password  # ATENÇÃO: Nunca armazene senhas em texto plano! Use hashing.
-        }).execute()
+        check_email = supabase.table("usuario").select("email").eq("email", email). execute()
 
-        # Verificar se há erros na inserção no banco de dados
-        if hasattr(db_response, 'error') and db_response.error:
-            return jsonify({"error": db_response.error.message}), 400
+        if len(check_email.data) <= 0:
+            # Inserir dados diretamente na tabela do banco de dados
+            db_response = supabase.table("usuario").insert({
+                "email": email,
+                "senha": password  # ATENÇÃO: Nunca armazene senhas em texto plano! Use hashing.
+            }).execute()
+            # Verificar se há erros na inserção no banco de dados
+            if hasattr(db_response, 'error') and db_response.error:
+                return jsonify({"error": db_response.error.message}), 400
+            # Retornar resposta de sucesso
+            return jsonify({
+                "message": "Dados registrados com sucesso!",
+                "data": {
+                    "email": email
+                }
+            }), 201
 
-        # Retornar resposta de sucesso
-        return jsonify({
-            "message": "Dados registrados com sucesso!",
-            "data": {
-                "email": email
-            }
-        }), 201
+        else:
+            return jsonify({"mensage": "Esse email ja foi cadastrado"}), 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
