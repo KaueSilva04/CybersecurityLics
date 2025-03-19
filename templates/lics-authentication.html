@@ -133,6 +133,37 @@
         function goBack() {
             window.location.href = "../index.html"; // Redireciona para a rota 'index'
         }
+
+        document.getElementById("register-form").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("register-email").value;
+            const password = document.getElementById("register-password").value;
+            const message = document.getElementById("message");
+
+            try {
+                const response = await fetch("https://seu-backend-no-render.com/register", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    message.innerText = "Usuário registrado com sucesso!";
+                    message.style.color = "green";
+                } else {
+                    message.innerText = data.error || "Erro no registro!";
+                    message.style.color = "red";
+                }
+            } catch (error) {
+                message.innerText = "Erro ao conectar com o servidor!";
+                message.style.color = "red";
+            }
+        });
     </script>
 </body>
 
