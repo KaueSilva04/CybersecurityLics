@@ -76,7 +76,7 @@ def register():
             }), 201
 
         else:
-            return jsonify({"mensage": "Esse email ja foi cadastrado"}), 200
+            return jsonify({"message": "Esse email ja foi cadastrado", "exists": True}), 202
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500

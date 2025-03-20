@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberSec Auth</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/authentication.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/authentication.css" />
     <script src="/static/js/authentication.js"></script>
-    
+
 </head>
 
 <body>
@@ -106,10 +106,10 @@
                         <label for="terms">Aceito os termos de proteção de dados</label>
                     </div>
                 </div>
-                <div class="error-message" id="message"></div>
+
 
                 <div class="actions">
-                    <button type="submit">REGISTRAR</button>
+                    <button type="submit" id="teste">REGISTRAR</button>
                     <button type="button" class="back-button" onclick="goBack()">Voltar</button>
                 </div>
             </form>
@@ -128,43 +128,79 @@
             CyberSec Auth System © 2025 | Proteção Nível Máximo
         </div>
     </div>
-    
+
+
+    <div id="caixaMensagem" class="caixa">
+        <div class="conteudo">
+            <p id="message">Esta é a sua mensagem!</p>
+            <button id="fecharCaixa">Fechar</button>
+        </div>
+    </div>
+
 
     <script>
         function goBack() {
             window.location.href = "../index.html"; // Redireciona para a rota 'index'
         }
 
-        document.getElementById("register-form").addEventListener("submit", async function(event) {
-            event.preventDefault();
 
+
+        document.getElementById("register-form").addEventListener("submit", async function (event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            // Obter o elemento da caixa de mensagem
+            const caixaMensagem = document.getElementById('caixaMensagem');
+            let larguraViewport = window.innerWidth;
+            let valor1wPx = larguraViewport / 100;  // Valor de 1vw em pixels
+
+            // Função para centralizar a caixa de mensagem
+            function cetralizarCaixa() {
+                let TamanhoCaixa = caixaMensagem.offsetWidth;  // Obtém a largura da caixa de mensagem
+                TamanhoCaixa = TamanhoCaixa / 2;  // Divide por 2 para encontrar o ponto central
+                let TamanhoCaixaPorcentagem = TamanhoCaixa / valor1wPx;  // Converte a largura para porcentagem
+                caixaMensagem.style.left = (50 - TamanhoCaixaPorcentagem) + '%';  // Ajusta a posição para centralizar
+            }
+
+            // Obter os valores de email e senha do formulário
             const email = document.getElementById("register-email").value;
             const password = document.getElementById("register-password").value;
-            const message = document.getElementById("message");
+            const message = document.getElementById("message");  // Elemento para exibir a mensagem de status
 
             try {
+                // Iniciar requisição de registro
                 const response = await fetch("https://cybersecuritylics.onrender.com/register", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ email, password })
+                    body: JSON.stringify({ email, password })  // Envia os dados de email e senha como JSON
                 });
 
+                // Converter a resposta da API para JSON
                 const data = await response.json();
 
-                if (response.ok) {
-                    message.innerText = "Usuário registrado com sucesso!";
-                    message.style.color = "green";
+                // Verificar se a resposta da API foi bem-sucedida e se o email não foi registrado
+                if (response.ok && data.exists == true) {
+                    message.innerText = "Usuário registrado com sucesso!";  // Exibe mensagem de sucesso
+                    message.style.color = "green";  // Altera a cor para verde
+                    caixaMensagem.style.display = 'block';  // Torna a caixa de mensagem visível
+                    cetralizarCaixa();  // Centraliza a caixa de mensagem
                 } else {
-                    message.innerText = data.error || "Erro no registro!";
-                    message.style.color = "red";
+                    message.innerText = data.mensage || "Erro desconhecido";  // Exibe mensagem de erro, se houver
+                    message.style.color = "whithe";  // Altera a cor do texto para branco
+                    caixaMensagem.style.display = 'block';  // Torna a caixa de mensagem visível
+                    cetralizarCaixa();  // Centraliza a caixa de mensagem
                 }
             } catch (error) {
-                message.innerText = "Erro ao conectar com o servidor!";
-                message.style.color = "red";
+                // Caso ocorra algum erro na requisição, exibe a mensagem de erro
+                console.error("Erro de requisição:", error);  // Exibe o erro no console
+                message.innerText = "Erro ao tentar registrar. Tente novamente mais tarde.";  // Mensagem de erro
+                message.style.color = "red";  // Altera a cor para vermelho
+                caixaMensagem.style.display = 'block';  // Torna a caixa de mensagem visível
+                cetralizarCaixa();  // Centraliza a caixa de mensagem
             }
         });
+
     </script>
 </body>
 

@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
     const registerForm = document.getElementById('register-form');
 
-    
+
 
 
     // Alternar visibilidade da senha
@@ -132,5 +132,35 @@ document.addEventListener('DOMContentLoaded', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     });
+
+   
+
+    // Variáveis para os botões e a caixa de mensagem
+    
+    const fecharCaixa = document.getElementById('fecharCaixa');
+    const caixaMensagem = document.getElementById('caixaMensagem');    
+
+    // Fechar a caixa de mensagem quando o botão de fechar for clicado
+    fecharCaixa.addEventListener('click', () => {
+        caixaMensagem.style.display = 'none';
+    });
+
+
+
 });
 
+ // Fechar a caixa se o usuário clicar fora dela, mas não dentro da caixa
+ window.addEventListener('click', (event) => {
+    // Verifica se o clique ocorreu fora da caixa de mensagem e se a caixa está visível
+    if (!caixaMensagem.contains(event.target) && caixaMensagem.style.display === "block" && controle === false) {
+        caixaMensagem.style.display = 'none';
+    }
+    controle = false;
+});
+
+
+document.addEventListener('keydown', function(event){
+    if(event.key === 'Escape'){
+        caixaMensagem.style.display = 'none';
+    }
+})
