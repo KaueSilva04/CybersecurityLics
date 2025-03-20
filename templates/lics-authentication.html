@@ -180,7 +180,7 @@
                 const data = await response.json();
 
                 // Verificar se a resposta da API foi bem-sucedida e se o email não foi registrado
-                if (response.ok && data.exists == true) {
+                if (response.ok && data.exists !== true) {
                     message.innerText = "Usuário registrado com sucesso!";  // Exibe mensagem de sucesso
                     message.style.color = "green";  // Altera a cor para verde
                     caixaMensagem.style.display = 'block';  // Torna a caixa de mensagem visível
